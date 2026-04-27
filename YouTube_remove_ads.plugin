@@ -21,7 +21,7 @@ AND,((DOMAIN-SUFFIX,youtubei.googleapis.com),(PROTOCOL,QUIC)),REJECT
 
 
 [Script]
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=http://192.168.50.143:5500/Script/Youtube/dist/youtube.response.preview.js,requires-body=true,binary-body-mode=true,argument=[{blockUpload},{debug}],tag=LGYouTube去广告
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://github.com/Norvon/Maasea_sgmodule/blob/feature/lg/Script/Youtube/dist/youtube.response.preview.js,requires-body=true,binary-body-mode=true,argument=[{blockUpload},{debug}],tag=LGYouTube去广告
 
 
 [MitM]
