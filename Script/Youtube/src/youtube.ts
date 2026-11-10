@@ -49,6 +49,7 @@ export abstract class YouTubeMessage {
       captionLang: 'zh-Hans',
       blockUpload: true,
       blockImmersive: true,
+      blockShorts: false,
       debug: false
     }
     return $.decodeParams(args)
