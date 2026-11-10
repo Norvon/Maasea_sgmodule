@@ -50,6 +50,7 @@ export abstract class YouTubeMessage {
       blockUpload: true,
       blockImmersive: true,
       blockShorts: false,
+      restoreSubscriptions: false,
       debug: false
     }
     return $.decodeParams(args)

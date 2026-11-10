@@ -4,6 +4,7 @@
 // @ts-nocheck
 
 import { proto3 } from "@bufbuild/protobuf";
+import { Label } from "../component/label_pb.js";
 
 /**
  * @generated from message youtube.response.browse.Guide
@@ -54,6 +55,98 @@ export const guideEntryRenderer = proto3.makeMessageType(
   "youtube.response.browse.guideEntryRenderer",
   () => [
     { no: 1, name: "browseId", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ],
+);
+
+/**
+ * 现有按钮仍用最小结构透传；这些字段只在恢复订阅入口时解析和构造。
+ * 字段参考 Morphe 01e767c 的 guide_response.proto 中用于重建的 Bytes 定义。
+ *
+ * @generated from message youtube.response.browse.GuideButton
+ */
+export const GuideButton = proto3.makeMessageType(
+  "youtube.response.browse.GuideButton",
+  () => [
+    { no: 318370163, name: "iconRender", kind: "message", T: GuideIconButton },
+    { no: 117501096, name: "labelRender", kind: "message", T: GuideLabelButton },
+  ],
+);
+
+/**
+ * @generated from message youtube.response.browse.GuideLabelButton
+ */
+export const GuideLabelButton = proto3.makeMessageType(
+  "youtube.response.browse.GuideLabelButton",
+  () => [
+    { no: 1, name: "pivotIdentifier", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "navigationEndpoint", kind: "message", T: GuideNavigationEndpoint },
+    { no: 3, name: "title", kind: "message", T: Label },
+    { no: 5, name: "icon", kind: "message", T: GuideButtonIcon },
+    { no: 11, name: "navigationType", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+  ],
+);
+
+/**
+ * @generated from message youtube.response.browse.GuideIconButton
+ */
+export const GuideIconButton = proto3.makeMessageType(
+  "youtube.response.browse.GuideIconButton",
+  () => [
+    { no: 1, name: "pivotIdentifier", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "navigationEndpoint", kind: "message", T: GuideNavigationEndpoint },
+    { no: 4, name: "accessibility", kind: "message", T: GuideButtonAccessibility },
+    { no: 5, name: "icon", kind: "message", T: GuideButtonIcon },
+    { no: 7, name: "navigationType", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+  ],
+);
+
+/**
+ * @generated from message youtube.response.browse.GuideNavigationEndpoint
+ */
+export const GuideNavigationEndpoint = proto3.makeMessageType(
+  "youtube.response.browse.GuideNavigationEndpoint",
+  () => [
+    { no: 48687626, name: "browseEndpoint", kind: "message", T: GuideBrowseEndpoint },
+  ],
+);
+
+/**
+ * @generated from message youtube.response.browse.GuideBrowseEndpoint
+ */
+export const GuideBrowseEndpoint = proto3.makeMessageType(
+  "youtube.response.browse.GuideBrowseEndpoint",
+  () => [
+    { no: 2, name: "browseId", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ],
+);
+
+/**
+ * @generated from message youtube.response.browse.GuideButtonIcon
+ */
+export const GuideButtonIcon = proto3.makeMessageType(
+  "youtube.response.browse.GuideButtonIcon",
+  () => [
+    { no: 1, name: "iconType", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+  ],
+);
+
+/**
+ * @generated from message youtube.response.browse.GuideButtonAccessibility
+ */
+export const GuideButtonAccessibility = proto3.makeMessageType(
+  "youtube.response.browse.GuideButtonAccessibility",
+  () => [
+    { no: 75730170, name: "data", kind: "message", T: GuideButtonAccessibilityData },
+  ],
+);
+
+/**
+ * @generated from message youtube.response.browse.GuideButtonAccessibilityData
+ */
+export const GuideButtonAccessibilityData = proto3.makeMessageType(
+  "youtube.response.browse.GuideButtonAccessibilityData",
+  () => [
+    { no: 2, name: "label", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ],
 );
 

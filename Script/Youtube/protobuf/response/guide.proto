@@ -1,5 +1,6 @@
 syntax = "proto3";
 package youtube.response.browse;
+import "protobuf/component/label.proto";
 
 message Guide {
   repeated Item items4 = 4;
@@ -17,4 +18,41 @@ message RendererItem {
 }
 message guideEntryRenderer {
   string browseId = 1;
+}
+
+// 现有按钮仍用最小结构透传；这些字段只在恢复订阅入口时解析和构造。
+// 字段参考 Morphe 01e767c 的 guide_response.proto 中用于重建的 Bytes 定义。
+message GuideButton {
+  GuideIconButton iconRender = 318370163;
+  GuideLabelButton labelRender = 117501096;
+}
+message GuideLabelButton {
+  string pivotIdentifier = 1;
+  GuideNavigationEndpoint navigationEndpoint = 2;
+  youtube.component.Label title = 3;
+  GuideButtonIcon icon = 5;
+  int32 navigationType = 11;
+}
+message GuideIconButton {
+  string pivotIdentifier = 1;
+  // 纯图标按钮的跳转字段是 3，不能套用普通按钮的字段 2。
+  GuideNavigationEndpoint navigationEndpoint = 3;
+  GuideButtonAccessibility accessibility = 4;
+  GuideButtonIcon icon = 5;
+  int32 navigationType = 7;
+}
+message GuideNavigationEndpoint {
+  GuideBrowseEndpoint browseEndpoint = 48687626;
+}
+message GuideBrowseEndpoint {
+  string browseId = 2;
+}
+message GuideButtonIcon {
+  int32 iconType = 1;
+}
+message GuideButtonAccessibility {
+  GuideButtonAccessibilityData data = 75730170;
+}
+message GuideButtonAccessibilityData {
+  string label = 2;
 }

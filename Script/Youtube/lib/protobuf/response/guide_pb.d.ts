@@ -5,6 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
+import type { Label } from "../component/label_pb.js";
 
 /**
  * @generated from message youtube.response.browse.Guide
@@ -134,5 +135,247 @@ export declare class guideEntryRenderer extends Message<guideEntryRenderer> {
   static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): guideEntryRenderer;
 
   static equals(a: guideEntryRenderer | PlainMessage<guideEntryRenderer> | undefined, b: guideEntryRenderer | PlainMessage<guideEntryRenderer> | undefined): boolean;
+}
+
+/**
+ * 现有按钮仍用最小结构透传；这些字段只在恢复订阅入口时解析和构造。
+ * 字段参考 Morphe 01e767c 的 guide_response.proto 中用于重建的 Bytes 定义。
+ *
+ * @generated from message youtube.response.browse.GuideButton
+ */
+export declare class GuideButton extends Message<GuideButton> {
+  /**
+   * @generated from field: youtube.response.browse.GuideIconButton iconRender = 318370163;
+   */
+  iconRender?: GuideIconButton;
+
+  /**
+   * @generated from field: youtube.response.browse.GuideLabelButton labelRender = 117501096;
+   */
+  labelRender?: GuideLabelButton;
+
+  constructor(data?: PartialMessage<GuideButton>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "youtube.response.browse.GuideButton";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GuideButton;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GuideButton;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GuideButton;
+
+  static equals(a: GuideButton | PlainMessage<GuideButton> | undefined, b: GuideButton | PlainMessage<GuideButton> | undefined): boolean;
+}
+
+/**
+ * @generated from message youtube.response.browse.GuideLabelButton
+ */
+export declare class GuideLabelButton extends Message<GuideLabelButton> {
+  /**
+   * @generated from field: string pivotIdentifier = 1;
+   */
+  pivotIdentifier: string;
+
+  /**
+   * @generated from field: youtube.response.browse.GuideNavigationEndpoint navigationEndpoint = 2;
+   */
+  navigationEndpoint?: GuideNavigationEndpoint;
+
+  /**
+   * @generated from field: youtube.component.Label title = 3;
+   */
+  title?: Label;
+
+  /**
+   * @generated from field: youtube.response.browse.GuideButtonIcon icon = 5;
+   */
+  icon?: GuideButtonIcon;
+
+  /**
+   * @generated from field: int32 navigationType = 11;
+   */
+  navigationType: number;
+
+  constructor(data?: PartialMessage<GuideLabelButton>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "youtube.response.browse.GuideLabelButton";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GuideLabelButton;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GuideLabelButton;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GuideLabelButton;
+
+  static equals(a: GuideLabelButton | PlainMessage<GuideLabelButton> | undefined, b: GuideLabelButton | PlainMessage<GuideLabelButton> | undefined): boolean;
+}
+
+/**
+ * @generated from message youtube.response.browse.GuideIconButton
+ */
+export declare class GuideIconButton extends Message<GuideIconButton> {
+  /**
+   * @generated from field: string pivotIdentifier = 1;
+   */
+  pivotIdentifier: string;
+
+  /**
+   * 纯图标按钮的跳转字段是 3，不能套用普通按钮的字段 2。
+   *
+   * @generated from field: youtube.response.browse.GuideNavigationEndpoint navigationEndpoint = 3;
+   */
+  navigationEndpoint?: GuideNavigationEndpoint;
+
+  /**
+   * @generated from field: youtube.response.browse.GuideButtonAccessibility accessibility = 4;
+   */
+  accessibility?: GuideButtonAccessibility;
+
+  /**
+   * @generated from field: youtube.response.browse.GuideButtonIcon icon = 5;
+   */
+  icon?: GuideButtonIcon;
+
+  /**
+   * @generated from field: int32 navigationType = 7;
+   */
+  navigationType: number;
+
+  constructor(data?: PartialMessage<GuideIconButton>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "youtube.response.browse.GuideIconButton";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GuideIconButton;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GuideIconButton;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GuideIconButton;
+
+  static equals(a: GuideIconButton | PlainMessage<GuideIconButton> | undefined, b: GuideIconButton | PlainMessage<GuideIconButton> | undefined): boolean;
+}
+
+/**
+ * @generated from message youtube.response.browse.GuideNavigationEndpoint
+ */
+export declare class GuideNavigationEndpoint extends Message<GuideNavigationEndpoint> {
+  /**
+   * @generated from field: youtube.response.browse.GuideBrowseEndpoint browseEndpoint = 48687626;
+   */
+  browseEndpoint?: GuideBrowseEndpoint;
+
+  constructor(data?: PartialMessage<GuideNavigationEndpoint>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "youtube.response.browse.GuideNavigationEndpoint";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GuideNavigationEndpoint;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GuideNavigationEndpoint;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GuideNavigationEndpoint;
+
+  static equals(a: GuideNavigationEndpoint | PlainMessage<GuideNavigationEndpoint> | undefined, b: GuideNavigationEndpoint | PlainMessage<GuideNavigationEndpoint> | undefined): boolean;
+}
+
+/**
+ * @generated from message youtube.response.browse.GuideBrowseEndpoint
+ */
+export declare class GuideBrowseEndpoint extends Message<GuideBrowseEndpoint> {
+  /**
+   * @generated from field: string browseId = 2;
+   */
+  browseId: string;
+
+  constructor(data?: PartialMessage<GuideBrowseEndpoint>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "youtube.response.browse.GuideBrowseEndpoint";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GuideBrowseEndpoint;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GuideBrowseEndpoint;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GuideBrowseEndpoint;
+
+  static equals(a: GuideBrowseEndpoint | PlainMessage<GuideBrowseEndpoint> | undefined, b: GuideBrowseEndpoint | PlainMessage<GuideBrowseEndpoint> | undefined): boolean;
+}
+
+/**
+ * @generated from message youtube.response.browse.GuideButtonIcon
+ */
+export declare class GuideButtonIcon extends Message<GuideButtonIcon> {
+  /**
+   * @generated from field: int32 iconType = 1;
+   */
+  iconType: number;
+
+  constructor(data?: PartialMessage<GuideButtonIcon>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "youtube.response.browse.GuideButtonIcon";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GuideButtonIcon;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GuideButtonIcon;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GuideButtonIcon;
+
+  static equals(a: GuideButtonIcon | PlainMessage<GuideButtonIcon> | undefined, b: GuideButtonIcon | PlainMessage<GuideButtonIcon> | undefined): boolean;
+}
+
+/**
+ * @generated from message youtube.response.browse.GuideButtonAccessibility
+ */
+export declare class GuideButtonAccessibility extends Message<GuideButtonAccessibility> {
+  /**
+   * @generated from field: youtube.response.browse.GuideButtonAccessibilityData data = 75730170;
+   */
+  data?: GuideButtonAccessibilityData;
+
+  constructor(data?: PartialMessage<GuideButtonAccessibility>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "youtube.response.browse.GuideButtonAccessibility";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GuideButtonAccessibility;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GuideButtonAccessibility;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GuideButtonAccessibility;
+
+  static equals(a: GuideButtonAccessibility | PlainMessage<GuideButtonAccessibility> | undefined, b: GuideButtonAccessibility | PlainMessage<GuideButtonAccessibility> | undefined): boolean;
+}
+
+/**
+ * @generated from message youtube.response.browse.GuideButtonAccessibilityData
+ */
+export declare class GuideButtonAccessibilityData extends Message<GuideButtonAccessibilityData> {
+  /**
+   * @generated from field: string label = 2;
+   */
+  label: string;
+
+  constructor(data?: PartialMessage<GuideButtonAccessibilityData>);
+
+  static readonly runtime: typeof proto3;
+  static readonly typeName = "youtube.response.browse.GuideButtonAccessibilityData";
+  static readonly fields: FieldList;
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GuideButtonAccessibilityData;
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GuideButtonAccessibilityData;
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GuideButtonAccessibilityData;
+
+  static equals(a: GuideButtonAccessibilityData | PlainMessage<GuideButtonAccessibilityData> | undefined, b: GuideButtonAccessibilityData | PlainMessage<GuideButtonAccessibilityData> | undefined): boolean;
 }
 

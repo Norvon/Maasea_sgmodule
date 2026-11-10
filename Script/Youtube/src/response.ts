@@ -11,6 +11,7 @@ import { Watch } from '../lib/protobuf/response/watch_pb'
 import { Entity } from '../lib/protobuf/response/frameworkUpdate_pb'
 
 import { YouTubeMessage } from './youtube'
+import { restoreSubscriptionsTab } from './guide'
 import { $ } from '../lib/env'
 import { translateURL } from '../lib/googleTranslate'
 import { protoBase64 } from '@bufbuild/protobuf'
@@ -364,6 +365,11 @@ export class GuideMessage extends YouTubeMessage {
     if (this.argument.blockImmersive) blackList.push('FEmusic_immersive')
     if (this.argument.blockShorts) blackList.push('FEshorts')
     this.iterate(this.message, 'rendererItems', (obj) => {
+      if (this.argument.restoreSubscriptions) {
+        const restored = restoreSubscriptionsTab(obj.rendererItems)
+        if (restored) this.needProcess = true
+        $.debug(`Restore subscriptions: ${restored ? 'added' : 'unchanged (already present or unrecognized layout)'}`)
+      }
       for (let i = obj.rendererItems.length - 1; i >= 0; i--) {
         const browseId =
           obj.rendererItems[i]?.iconRender?.browseId ||
